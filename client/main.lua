@@ -26,7 +26,7 @@ CreateThread(function()
                                 local failed = false
 
                                 repeat
-                                    local success = exports['skillcheck']:StartLockPickCircle(1, math.random(skill.time.min, skill.time.max))
+                                    local success = exports['mor-lock']:StartLockPickCircle(1, math.random(skill.time.min, skill.time.max))
                                     failed = not success
                                     rounds = rounds + 1
                                 until failed or rounds >= skill.rounds
