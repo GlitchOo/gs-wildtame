@@ -41,14 +41,13 @@ CreateThread(function()
                                 else
                                     horse.isTamed = true
                                     SetAnimalIsWild(mount, false)
-                                    print('Tamed')
                                 end
                             end
                         end
                     end
                 else
                     -- Kick player off of horse if it's not tamed and they waited too long
-                    if not horse.isTamed then
+                    if not horse.isTamed and and GetActiveAnimalOwner(mount) == 0 then
                         HorseAgitate(mount, true)
                         Wait(2500)
                         SetAnimalIsWild(mount, true)
@@ -69,6 +68,7 @@ if Config.Dev then
         local ped = PlayerPedId()
         local mount = GetMount(ped)
         if mount then
+            ClearActiveAnimalOwner(mount, true)
             SetAnimalIsWild(mount, true)
         end
     end)
