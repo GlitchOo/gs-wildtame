@@ -7,8 +7,9 @@ CreateThread(function()
 
             local ped = PlayerPedId()
             local mount = GetMount(ped)
+            local rider = GetRiderOfMount(mount)
 
-            if mount then
+            if mount and rider == ped then
                 local horse = Entity(mount).state
                 if GetAnimalIsWild(mount) == 1 then
                     sleep = 0
